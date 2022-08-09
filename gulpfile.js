@@ -78,13 +78,13 @@ gulp.task('jshint', function () {
 /*****
  * Base task
  *****/
-gulp.task('default', ['jshint', 'build']);
+gulp.task('default',  gulp.series(['jshint', 'build']));
 
 
 /*****
  * Release task
  *****/
-gulp.task('release', ['jshint', 'build'], function (cb) {
+gulp.task('release', gulp.series(['jshint', 'build']), function (cb) {
     var up = process.argv[3] || 'patch';
 
     up = up.replace('--', '');
